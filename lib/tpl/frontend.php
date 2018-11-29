@@ -8,14 +8,22 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div id="sv_teaser"<?php if ($dashboard_user->get_meta('bb_trainer_featured_image')){ echo ' class="sv_has_thumbnail"'; } ?>>
 		<?php 
-			echo do_shortcode('[sv_mood title="'.$dashboard_user->get_title().'" subtitle="'.$dashboard_user->get_meta('bb_trainer_featured_image_caption').'" image="'.$dashboard_user->get_meta('bb_trainer_featured_image').'"]'); 
+			echo do_shortcode('[sv_mood class="trainer" title="'.$dashboard_user->get_title().'" subtitle="'.$dashboard_user->get_meta('bb_trainer_featured_image_caption').'" image="'.$dashboard_user->get_meta('bb_trainer_featured_image').'"]');
 		?>
 	</div>
 	<div class="container padding-v-lg">
+		<div class="row">
+			<div class="col-10 col-sm-4 container mb-4 mb-sm-0">
+				<?php echo $dashboard_user->get_image(false, 'large'); ?>
+			</div>
+			<div class="col-8 align-items-center d-flex container">
+				<?php echo $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : ''; ?>
+			</div>
+		</div>
 		<?php if($dashboard_user->get_meta('bb_trainer_quote')): ?>
-		<h2>&quot;<?php echo $dashboard_user->get_meta('bb_trainer_quote'); ?>&quot;</h2>
+		<h2 class="mt-4">&quot;<?php echo $dashboard_user->get_meta('bb_trainer_quote'); ?>&quot;</h2>
 		<?php endif; ?>
-		<p class="mb-4"><strong><?php echo $dashboard_user->get_title(); ?> <?php echo $dashboard_user->get_meta('bb_trainer_title'); ?></strong></p>
+		<p class="mb-4 mt-5"><strong><?php echo $dashboard_user->get_title(); ?> <?php echo $dashboard_user->get_meta('bb_trainer_title'); ?></strong></p>
 		<p><?php echo $dashboard_user->get_meta('bb_trainer_description'); ?></p>
 		<p>&nbsp;</p>
 		<?php
@@ -24,7 +32,7 @@
 			
 			if($products){
 		?>
-            <p class="mb-4"><strong><?php echo $dashboard_user->get_title(); ?>s Themenschwerpunkte:</strong></p>
+            <p class="mb-4"><strong>Aktuelle Themen</strong></p>
             <?php
                 $shortcode		= '[sv_card_wrap]';
                 foreach($products as $product_id){
