@@ -16,7 +16,7 @@
 			<div class="col-10 col-sm-4 container mb-4 mb-sm-0">
 				<?php echo $dashboard_user->get_image(false, 'large'); ?>
 			</div>
-			<div class="col-8 align-items-center d-flex container">
+			<div class="trainer-details col-8 align-items-center d-flex container">
 				<?php echo $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : ''; ?>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 		<h2 class="mt-4">&quot;<?php echo $dashboard_user->get_meta('bb_trainer_quote'); ?>&quot;</h2>
 		<?php endif; ?>
 		<p class="mb-4 mt-5"><strong><?php echo $dashboard_user->get_title(); ?> <?php echo $dashboard_user->get_meta('bb_trainer_title'); ?></strong></p>
-		<p><?php echo $dashboard_user->get_meta('bb_trainer_description'); ?></p>
+		<p><?php echo preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_description') ); ?></p>
 		<p>&nbsp;</p>
 		<?php
 			global $wpdb;
