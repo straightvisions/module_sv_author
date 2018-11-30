@@ -19,14 +19,19 @@
 			<div class="trainer-details col-8 container my-auto">
 				<?php
 				$details = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : '' );
-				preg_match( "'<ul>(.*?)</ul>'si", $details, $match );
+				preg_match( "'<ul>(.*?)</ul>'si", $details, $match_ul );
+				preg_match( "'<ol>(.*?)</ol>'si", $details, $match_ol );
 
-				if( $match ) {
-					$filtered_text = preg_replace('/\<br>/', '', $match[0] );
-					echo str_replace( $match[0], $filtered_text, $details );
-				} else {
-					echo $details;
+				if ( $match_ul ) {
+					$filtered_text = preg_replace('/\<br>/', '', $match_ul[0] );
+					$details = str_replace( $match_ul[0], $filtered_text, $details );
 				}
+				if ( $match_ol) {
+					$filtered_text = preg_replace('/\<br>/', '', $match_ol[0] );
+					$details = str_replace( $match_ol[0], $filtered_text, $details );
+				}
+
+				echo $details;
 				?>
 			</div>
 		</div>
@@ -37,14 +42,19 @@
 		<p>
 			<?php
 			$description = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_description') ? $dashboard_user->get_meta('bb_trainer_description') : '' );
-			preg_match( "'<ul>(.*?)</ul>'si", $description, $match );
+			preg_match( "'<ul>(.*?)</ul>'si", $description, $match_ul );
+			preg_match( "'<ol>(.*?)</ol>'si", $description, $match_ol );
 
-			if( $match ) {
-				$filtered_text = preg_replace('/\<br>/', '', $match[0] );
-				echo str_replace( $match[0], $filtered_text, $description );
-			} else {
-				echo $description;
+			if ( $match_ul ) {
+				$filtered_text = preg_replace('/\<br>/', '', $match_ul[0] );
+				$description = str_replace( $match_ul[0], $filtered_text, $description );
 			}
+			if ( $match_ol) {
+				$filtered_text = preg_replace('/\<br>/', '', $match_ol[0] );
+				$description = str_replace( $match_ol[0], $filtered_text, $description );
+			}
+
+			echo $description;
 			?>
 		</p>
 		<p>&nbsp;</p>
