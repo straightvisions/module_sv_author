@@ -13,7 +13,7 @@
 	</div>
 	<div class="container padding-v-lg">
 		<div class="row">
-			<div class="col-10 col-sm-4 container mb-4 mb-sm-0">
+			<div class="col-10 col-sm-3 container mb-4 mb-sm-0">
 				<?php echo $dashboard_user->get_image(false, 'large'); ?>
 			</div>
 			<div class="trainer-details col-8 align-items-center d-flex container">
