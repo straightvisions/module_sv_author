@@ -16,7 +16,7 @@
 			<div class="col-10 col-sm-3 container mb-4 mb-sm-0">
 				<?php echo $dashboard_user->get_image(false, 'large'); ?>
 			</div>
-			<div class="trainer-details col-9 align-items-center d-flex container">
+			<div class="trainer-details col-8 align-items-center d-flex container">
 				<?php echo $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : ''; ?>
 			</div>
 		</div>
@@ -33,7 +33,6 @@
 			if($products){
 		?>
             <p class="mb-4"><strong>Aktuelle Themen</strong></p>
-				<h1>You are cute! ♥</h1>
             <?php
                 $shortcode		= '[sv_card_wrap]';
                 foreach($products as $product_id){
