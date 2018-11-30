@@ -16,15 +16,37 @@
 			<div class="col-10 col-sm-3 container mb-4 mb-sm-0">
 				<?php echo $dashboard_user->get_image(false, 'large'); ?>
 			</div>
-			<div class="trainer-details col-8 align-items-center d-flex container">
-				<?php echo $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : ''; ?>
+			<div class="trainer-details col-8 container my-auto">
+				<?php
+				$details = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : '' );
+				preg_match( "'<ul>(.*?)</ul>'si", $details, $match );
+
+				if( $match ) {
+					$filtered_text = preg_replace('/\<br>/', '', $match[0] );
+					echo str_replace( $match[0], $filtered_text, $details );
+				} else {
+					echo $details;
+				}
+				?>
 			</div>
 		</div>
 		<?php if($dashboard_user->get_meta('bb_trainer_quote')): ?>
 		<h2 class="mt-4">&quot;<?php echo $dashboard_user->get_meta('bb_trainer_quote'); ?>&quot;</h2>
 		<?php endif; ?>
 		<p class="mb-4 mt-5"><strong><?php echo $dashboard_user->get_title(); ?> <?php echo $dashboard_user->get_meta('bb_trainer_title'); ?></strong></p>
-		<p><?php echo preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_description') ); ?></p>
+		<p>
+			<?php
+			$description = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_description') ? $dashboard_user->get_meta('bb_trainer_description') : '' );
+			preg_match( "'<ul>(.*?)</ul>'si", $description, $match );
+
+			if( $match ) {
+				$filtered_text = preg_replace('/\<br>/', '', $match[0] );
+				echo str_replace( $match[0], $filtered_text, $description );
+			} else {
+				echo $description;
+			}
+			?>
+		</p>
 		<p>&nbsp;</p>
 		<?php
 			global $wpdb;
