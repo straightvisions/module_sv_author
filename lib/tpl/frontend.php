@@ -17,46 +17,14 @@
 				<?php echo $dashboard_user->get_image(false, 'large'); ?>
 			</div>
 			<div class="trainer-details col-8 container my-auto">
-				<?php
-				$details = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_details') ? $dashboard_user->get_meta('bb_trainer_details') : '' );
-				preg_match( "'<ul>(.*?)</ul>'si", $details, $match_ul );
-				preg_match( "'<ol>(.*?)</ol>'si", $details, $match_ol );
-
-				if ( $match_ul ) {
-					$filtered_text = preg_replace('/\<br>/', '', $match_ul[0] );
-					$details = str_replace( $match_ul[0], $filtered_text, $details );
-				}
-				if ( $match_ol) {
-					$filtered_text = preg_replace('/\<br>/', '', $match_ol[0] );
-					$details = str_replace( $match_ol[0], $filtered_text, $details );
-				}
-
-				echo $details;
-				?>
+			<?php echo $dashboard_user->get_meta('bb_trainer_description') ? wpautop( $dashboard_user->get_meta('bb_trainer_details') ) : ''; ?>
 			</div>
 		</div>
 		<?php if($dashboard_user->get_meta('bb_trainer_quote')): ?>
 		<h2 class="mt-4">&quot;<?php echo $dashboard_user->get_meta('bb_trainer_quote'); ?>&quot;</h2>
 		<?php endif; ?>
 		<p class="mb-4 mt-5"><strong><?php echo $dashboard_user->get_title(); ?> <?php echo $dashboard_user->get_meta('bb_trainer_title'); ?></strong></p>
-		<p>
-			<?php
-			$description = preg_replace('/\R+/', '<br>', $dashboard_user->get_meta('bb_trainer_description') ? $dashboard_user->get_meta('bb_trainer_description') : '' );
-			preg_match( "'<ul>(.*?)</ul>'si", $description, $match_ul );
-			preg_match( "'<ol>(.*?)</ol>'si", $description, $match_ol );
-
-			if ( $match_ul ) {
-				$filtered_text = preg_replace('/\<br>/', '', $match_ul[0] );
-				$description = str_replace( $match_ul[0], $filtered_text, $description );
-			}
-			if ( $match_ol) {
-				$filtered_text = preg_replace('/\<br>/', '', $match_ol[0] );
-				$description = str_replace( $match_ol[0], $filtered_text, $description );
-			}
-
-			echo $description;
-			?>
-		</p>
+		<?php echo $dashboard_user->get_meta('bb_trainer_description') ? wpautop( $dashboard_user->get_meta('bb_trainer_description') ) : ''; ?>
 		<p>&nbsp;</p>
 		<?php
 			global $wpdb;
