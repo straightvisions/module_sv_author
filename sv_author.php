@@ -18,9 +18,11 @@ class sv_author extends init {
 	}
 
 	public function init() {
+		// Module Info
 		$this->set_module_title( 'SV Author' );
-		$this->set_module_desc( 'This module gives the ability to manage and display author pages via the "[sv_author]" shortcode.' );
+		$this->set_module_desc( __( 'This module gives the ability to display author pages via the "[sv_author]" shortcode.', $this->get_module_name() ) );
 
+		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 	}
 
@@ -32,7 +34,6 @@ class sv_author extends init {
 			$settings,
 			$this->get_module_name()
 		);
-		$this->module_enqueue_scripts( $settings['inline'] );
 
 		ob_start();
 		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
