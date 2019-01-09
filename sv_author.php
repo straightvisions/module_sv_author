@@ -9,20 +9,23 @@ namespace sv_100;
  * @since			1.0
  * @license			See license.txt or https://straightvisions.com
  */
-class sv_author extends init{
+
+class sv_author extends init {
 	static $scripts_loaded						= false;
 
-	public function __construct($path,$url){
+	public function __construct( $path, $url ) {
 		$this->path								= $path;
 		$this->url								= $url;
-		$this->name								= get_class($this);
 	}
 
 	public function init() {
-		add_shortcode($this->get_module_name(), array($this, 'shortcode'));
+		$this->set_module_title( 'SV Author' );
+		$this->set_module_desc( 'This module gives the ability to manage and display author pages via the "[sv_author]" shortcode.' );
+
+		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 	}
 
-	public function shortcode($settings, $content=''){
+	public function shortcode( $settings, $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true
@@ -30,10 +33,10 @@ class sv_author extends init{
 			$settings,
 			$this->get_module_name()
 		);
-		$this->module_enqueue_scripts($settings['inline']);
+		$this->module_enqueue_scripts( $settings['inline'] );
 
 		ob_start();
-		include($this->get_file_path('lib/tpl/frontend.php'));
+		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
 		$output									= ob_get_contents();
 		ob_end_clean();
 
