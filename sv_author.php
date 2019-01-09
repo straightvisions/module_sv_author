@@ -13,9 +13,8 @@ namespace sv_100;
 class sv_author extends init {
 	static $scripts_loaded						= false;
 
-	public function __construct( $path, $url ) {
-		$this->path								= $path;
-		$this->url								= $url;
+	public function __construct() {
+
 	}
 
 	public function init() {
