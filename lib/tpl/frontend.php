@@ -7,7 +7,7 @@ $author_ID 		= get_the_author_meta( 'ID' );
 	<div class="<?php echo $this->get_module_name(); ?> row">
 		<div class="header col-12 text-center mb-5">
 			<h6 class="mb-4">Author</h6>
-			<?php echo get_avatar( $author_ID, 100 ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), '100' ); ?>
 			<h3 class="author-name mt-4"><?php the_author(); ?></h3>
 			<h6 class="author-posts mb-4">
 				<?php echo count( get_posts( array( 'author' => $author_ID ) ) ); ?>
