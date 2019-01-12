@@ -11,8 +11,6 @@ namespace sv_100;
  */
 
 class sv_author extends init {
-	static $scripts_loaded						= false;
-
 	public function __construct() {
 
 	}
