@@ -16,9 +16,10 @@
 			$this->path								= $path;
 			$this->url								= $url;
 			$this->name								= get_class($this);
-			
+		}
+		public function init() {
 			add_shortcode($this->get_module_name(), array($this, 'shortcode'));
-			
+
 			add_action('after_setup_theme', array($this, 'enable_author_archives_for_trainers_only')); // remove WC action
 			add_action('template_redirect', array($this, 'template_redirect')); // allow profile pages for trainers only
 		}
@@ -44,7 +45,7 @@
 			$this->module_enqueue_scripts($settings['inline']);
 			
 			ob_start();
-			include($this->get_path('lib/tpl/frontend.php'));
+			include($this->get_file_path('lib/tpl/frontend.php'));
 			$output									= ob_get_contents();
 			ob_end_clean();
 			
