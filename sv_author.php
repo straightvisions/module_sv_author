@@ -23,6 +23,11 @@ class sv_author extends init {
 
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
+
+		$this->scripts_queue['frontend']			= static::$scripts->create( $this )
+			->set_ID('frontend')
+			->set_path( 'lib/css/frontend.css' )
+			->set_inline(true);
 	}
 
 	public function shortcode( $settings, $content = '' ) {
@@ -33,6 +38,11 @@ class sv_author extends init {
 			$settings,
 			$this->get_module_name()
 		);
+
+		// Load Styles
+		$this->scripts_queue['frontend']
+			->set_inline($settings['inline'])
+			->set_is_enqueued();
 
 		ob_start();
 		include( $this->get_path( 'lib/tpl/frontend.php' ) );
