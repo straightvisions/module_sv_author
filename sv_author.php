@@ -35,7 +35,7 @@ class sv_author extends init {
 		);
 
 		ob_start();
-		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
+		include( $this->get_path( 'lib/tpl/frontend.php' ) );
 		$output									= ob_get_contents();
 		ob_end_clean();
 
