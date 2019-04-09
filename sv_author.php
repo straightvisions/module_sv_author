@@ -17,6 +17,9 @@ class sv_author extends init {
 	}
 
 	public function init() {
+		// Translates the module
+		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+
 		// Module Info
 		$this->set_module_title( 'SV Author' );
 		$this->set_module_desc( __( 'This module gives the ability to display author pages via the "[sv_author]" shortcode.', $this->get_module_name() ) );
