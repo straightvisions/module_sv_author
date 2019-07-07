@@ -33,7 +33,7 @@ class sv_author extends init {
 			->set_inline(true);
 	}
 
-	public function load( $settings, $content = '' ) {
+	public function load( $settings = array(), $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true
