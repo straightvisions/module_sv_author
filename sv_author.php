@@ -1,5 +1,5 @@
 <?php
-namespace sv_100;
+namespace sv100;
 
 /**
  * @version         1.00
@@ -12,10 +12,6 @@ namespace sv_100;
  */
 
 class sv_author extends init {
-	public function __construct() {
-
-	}
-
 	public function init() {
 		// Translates the module
 		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
@@ -27,8 +23,7 @@ class sv_author extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->scripts_queue['frontend']			= static::$scripts->create( $this )
-			->set_ID('frontend')
+		$this->get_script('frontend')
 			->set_path( 'lib/css/frontend.css' )
 			->set_inline(true);
 	}
@@ -43,7 +38,7 @@ class sv_author extends init {
 		);
 
 		// Load Styles
-		$this->scripts_queue['frontend']
+		$this->get_script('frontend')
 			->set_inline($settings['inline'])
 			->set_is_enqueued();
 
