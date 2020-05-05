@@ -23,8 +23,8 @@ class sv_author extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->get_script('frontend')
-			->set_path( 'lib/css/frontend.css' )
+		$this->get_script('common')
+			->set_path( 'lib/css/common.css' )
 			->set_inline(true);
 	}
 
@@ -38,7 +38,7 @@ class sv_author extends init {
 		);
 
 		// Load Styles
-		$this->get_script('frontend')
+		$this->get_script('common')
 			->set_inline($settings['inline'])
 			->set_is_enqueued();
 
