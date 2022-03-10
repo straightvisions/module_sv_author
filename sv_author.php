@@ -14,9 +14,6 @@
 				->get_root()
 				->add_section( $this );
 
-			// Shortcodes
-			add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
-
 			$this->get_script('common')
 				->set_path( 'lib/css/common.css' )
 				->set_inline(true);
